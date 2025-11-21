@@ -1,86 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Spring Hill Halloween Candy Map</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <style>
-        #map { height: 80vh; width: 100%; }
-        body { font-family: Arial, sans-serif; padding: 10px; }
-        #login { margin-bottom: 10px; }
-    </style>
+  <title>Spring Hill Halloween Candy Map</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 80vh; width: 100%; }
+    body { font-family: Arial, sans-serif; padding: 10px; }
+  </style>
 </head>
 <body>
-    <h2>Spring Hill Halloween Candy Map 🎃</h2>
-    <div id="login">
-        <button onclick="login()">Login Anonymously</button>
-        <span id="user-info"></span>
-    </div>
-    <p>Click the map to add your candy location. Only you can delete your pins.</p>
-    <div id="map"></div>
+  <h2>Spring Hill Halloween Candy Map 🎃</h2>
+  <p>Click the map to add a candy location. Pins are public and anonymous.</p>
+  <div id="map"></div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Firebase + Leaflet -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <script>
-        // ==== Firebase Config ====
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const auth = firebase.auth();
+  <script>
+    // ==== Firebase Config (replace with your actual values) ====
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-        let currentUserId = null;
-        let map = L.map('map').setView([28.4772, -82.5179], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+    // ==== Map Setup ====
+    const map = L.map('map').setView([28.4772, -82.5179], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
-        // ==== Login ====
-        function login() {
-            auth.signInAnonymously()
-            .then(() => {
-                currentUserId = auth.currentUser.uid;
-                document.getElementById("user-info").innerText = "Logged in";
-                loadPins();
-            })
-            .catch(error => console.error(error));
-        }
-
-        // ==== Load Pins from Firestore ====
-        function loadPins() {
-            db.collection("pins").onSnapshot(snapshot => {
-                map.eachLayer(layer => { if (layer.options && layer.options.pane === "markerPane") map.removeLayer(layer); });
-                snapshot.forEach(doc => {
-                    const pin = doc.data();
-                    let marker = L.marker([pin.lat, pin.lng]).addTo(map);
-                    marker.userId = pin.userId;
-                    marker.pinId = doc.id;
-                    marker.bindPopup(pin.label + (pin.userId === currentUserId ? "<br><button onclick='deletePin(\""+doc.id+"\")'>Delete Pin</button>" : ""));
-                });
-            });
-        }
-
-        // ==== Add Pin ====
-        map.on('click', function(e) {
-            if (!currentUserId) { alert("Please log in first."); return; }
-            const pinData = { lat: e.latlng.lat, lng: e.latlng.lng, label: "Candy Here!", userId: currentUserId };
-            db.collection("pins").add(pinData);
+    // ==== Load Pins ====
+    function loadPins() {
+      db.collection("pins").onSnapshot(snapshot => {
+        map.eachLayer(layer => {
+          if (layer.options && layer.options.pane === "markerPane") {
+            map.removeLayer(layer);
+          }
         });
+        snapshot.forEach(doc => {
+          const pin = doc.data();
+          const marker = L.marker([pin.lat, pin.lng]).addTo(map);
+          marker.bindPopup(pin.label || "Candy Here!");
+        });
+      });
+    }
 
-        // ==== Delete Pin ====
-        function deletePin(pinId) {
-            db.collection("pins").doc(pinId).delete();
-        }
-    </script>
+    // ==== Add Pin on Click ====
+    map.on('click', function(e) {
+      const pinData = {
+        lat: e.latlng.lat,
+        lng: e.latlng.lng,
+        label: "Candy Here!"
+      };
+      db.collection("pins").add(pinData);
+    });
+
+    // ==== Start ====
+    loadPins();
+  </script>
 </body>
 </html>
