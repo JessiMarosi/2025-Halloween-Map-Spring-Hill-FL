@@ -9,7 +9,7 @@ A spooky, interactive map designed to showcase community trick-or-treat hotspots
 
 ## 🎯 How to Use
 
-This map helps residents of Spring Hill, FL, share and discover Halloween candy locations — no login required!
+This map helps residents of Spring Hill, FL, share and discover Halloween candy locations — no login required! It can be adjusted for use anywhere in the world.
 
 ### 🗺️ Access the Map
 
