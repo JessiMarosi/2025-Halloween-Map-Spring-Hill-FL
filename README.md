@@ -14,7 +14,7 @@ This map helps residents of Spring Hill, FL, share and discover Halloween candy 
 ### 🗺️ Access the Map
 
 Visit the live map here:  
-**file:///C:/Users/jsmar/OneDrive/Documents/Halloween%20Map%202025.html**
+**https://JESSIMAROSI.github.io/2025-HALLOWEEN-MAP-SPRING-HILL-FL**
 
 ### 🍬 Add a Candy Location
 
