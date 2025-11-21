@@ -1,73 +1,27 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Spring Hill Halloween Candy Map</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    #map { height: 80vh; width: 100%; }
-    body { font-family: Arial, sans-serif; padding: 10px; }
-  </style>
-</head>
-<body>
-  <h2>Spring Hill Halloween Candy Map 🎃</h2>
-  <p>Click the map to add a candy location. Pins are public and anonymous.</p>
-  <div id="map"></div>
-
-  <!-- Firebase + Leaflet -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-  <script>
-    // ==== Firebase Config (replace with your actual values) ====
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-
-    // ==== Map Setup ====
-    const map = L.map('map').setView([28.4772, -82.5179], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    // ==== Load Pins ====
-    function loadPins() {
-      db.collection("pins").onSnapshot(snapshot => {
-        map.eachLayer(layer => {
-          if (layer.options && layer.options.pane === "markerPane") {
-            map.removeLayer(layer);
-          }
-        });
-        snapshot.forEach(doc => {
-          const pin = doc.data();
-          const marker = L.marker([pin.lat, pin.lng]).addTo(map);
-          marker.bindPopup(pin.label || "Candy Here!");
-        });
-      });
-    }
-
-    // ==== Add Pin on Click ====
-    map.on('click', function(e) {
-      const pinData = {
-        lat: e.latlng.lat,
-        lng: e.latlng.lng,
-        label: "Candy Here!"
-      };
-      db.collection("pins").add(pinData);
-    });
-
-    // ==== Start ====
-    loadPins();
-  </script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=https://1drv.ms/u/c/916a836993ab02ad/IQBgnANgQy1nRpEoqlV2BjL6AZE9j3kxejf9QhS3Igis7yY?e=OdojsD" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting to Halloween Map</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #1a1a1a;
+        color: #f5f5f5;
+        text-align: center;
+        padding-top: 100px;
+      }
+      a {
+        color: #ff9900;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎃 Spring Hill Halloween Map 2025</h1>
+    <p>Redirecting you to the interactive map...</p>
+    <p>If you're not redirected automatically, <a href="https://1drv.ms/u/c/916a836993ab02ad/IQBgnANgQy1nRpEoqlV2BjL6AZE9j3kxejf9QhS3Igis7yY?e=OdojsD">click here to view it</a>.</p>
+  </body>
 </html>
-
