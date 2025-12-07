@@ -1,37 +1,36 @@
-# 🎃 Halloween Map
+# Halloween Map
 
-A spooky, interactive map designed to showcase community trick-or-treat hotspots, haunted houses, and festive decorations around Spring Hill, Florida...
+An interactive, community-driven map designed to showcase opt-in Halloween participation across neighborhoods. Built as a civic engagement artifact, this project demonstrates reproducibility, public deployment via GitHub Pages, and recruiter-facing usability with clear documentation and evidence artifacts.
 
-## Features
-- Interactive pins for candy stops and haunted zones
-- Custom icons and festive overlays
-- Mobile-friendly layout for on-the-go exploration
+---
 
-## 🎯 How to Use
+## 🎃 Objectives
 
-This map helps residents of Spring Hill, FL, share and discover Halloween candy locations — no login required! It can be adjusted for use anywhere in the world.
+- Provide a **family-friendly, opt-in map** for Halloween participation  
+- Demonstrate **front-end deployment** using GitHub Pages with reproducible workflows  
+- Showcase **data privacy practices** by limiting inputs to voluntary, non-sensitive information  
+- Deliver a recruiter-facing example of **public usability and civic engagement**  
 
-### 🗺️ Access the Map
+---
 
-Visit the live map here:  
-**https://jessimarosi.github.io/2025-Halloween-Map-Spring-Hill-FL/**
+## 📊 Impact & Results
 
-### 🍬 Add a Candy Location
+- Successfully deployed a **live interactive map** accessible via GitHub Pages  
+- Implemented **opt-in logic** ensuring only voluntary participation data is displayed  
+- Validated reproducibility by documenting setup and deployment steps for recruiters  
+- Demonstrated **portfolio-grade usability** with clear navigation and responsive design  
 
-1. Open the map in your browser.
-2. Click anywhere on the map to drop a pin.
-3. The pin will be labeled **“Candy Here!”** and saved for others to see.
+---
 
-### 👻 View Other Pins
+## 🏗 Repository Structure
 
-- All pins are public and anonymous.
-- Refresh the page to see new pins added by others.
-
-### 🔐 No Login Required
-
-- Anyone can add a pin — no sign-in needed.
-- Pins cannot be deleted once placed.
-...
-
-## Credits
-Created by Jessi on Halloween 2025 🎃
+```plaintext
+Halloween-Map/
+├── Docs/                  # Setup guides, deployment notes, civic engagement reports
+├── Configs/               # Map configuration files, JSON datasets
+├── Scripts/               # Automation scripts for data updates and deployment
+├── Evidence/              # Screenshots, logs, and proof of deployment
+├── Images/                # Icons, map markers, and UI assets
+├── Diagrams/              # Architecture diagrams, workflow charts
+├── Pages/                 # GitHub Pages deployment files
+└── README.md              # This file
