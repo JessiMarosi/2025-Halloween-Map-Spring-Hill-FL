@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=https://1drv.ms/u/c/916a836993ab02ad/IQBgnANgQy1nRpEoqlV2BjL6AZE9j3kxejf9QhS3Igis7yY?e=OdojsD" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting to Halloween Map</title>
-    <style>
-      body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #1a1a1a;
-        color: #f5f5f5;
-        text-align: center;
-        padding-top: 100px;
-      }
-      a {
-        color: #ff9900;
-        text-decoration: underline;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>🎃 Spring Hill Halloween Map 2025</h1>
-    <p>Redirecting you to the interactive map...</p>
-    <p>If you're not redirected automatically, <a href="https://1drv.ms/u/c/916a836993ab02ad/IQBgnANgQy1nRpEoqlV2BjL6AZE9j3kxejf9QhS3Igis7yY?e=OdojsD">click here to view it</a>.</p>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>🎃 Spring Hill Halloween Map 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1a1a1a;
+      color: #f5f5f5;
+    }
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+    .leaflet-popup-content {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center; padding:10px;">🎃 Spring Hill Halloween Map 2025</h1>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script>
+    // Initialize map centered on Spring Hill, FL
+    var map = L.map('map').setView([28.478, -82.536], 13);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Allow visitors to drop pins
+    function onMapClick(e) {
+      L.marker(e.latlng).addTo(map)
+        .bindPopup("🎃 Halloween Spot<br>" + e.latlng.toString())
+        .openPopup();
+    }
+
+    map.on('click', onMapClick);
+  </script>
+</body>
 </html>
+
