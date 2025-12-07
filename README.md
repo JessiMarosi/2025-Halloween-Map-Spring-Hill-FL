@@ -4,7 +4,7 @@ An interactive, community-driven map designed to showcase opt-in Halloween parti
 
 ---
 
-Demo: https://<your-username>.github.io/halloween-map/
+[Live Demo: Halloween Map](https://jessimarosi.github.io/halloween-map/)
 
 ---
 
