@@ -4,6 +4,10 @@ An interactive, community-driven map designed to showcase opt-in Halloween parti
 
 ---
 
+Demo: https://<your-username>.github.io/halloween-map/
+
+---
+
 ## 🎃 Objectives
 
 - Provide a **family-friendly, opt-in map** for Halloween participation  
@@ -34,3 +38,41 @@ Halloween-Map/
 ├── Diagrams/              # Architecture diagrams, workflow charts
 ├── Pages/                 # GitHub Pages deployment files
 └── README.md              # This file
+
+---
+
+# 🎃 Halloween Map — Setup Guide
+
+This guide explains how to set up, configure, and deploy the Halloween Map project. Designed for civic engagement and recruiter-facing usability, this map allows families to opt into Halloween participation and view neighborhood activity in real time.
+
+---
+
+## 🧭 Prerequisites
+
+- Git installed locally
+- GitHub account with Pages enabled
+- Basic familiarity with HTML, CSS, and JSON
+- Optional: Python or Bash for automation scripts
+
+---
+
+## 🏗 Folder Overview
+
+- `Configs/` — JSON datasets and map configuration files  
+- `Pages/` — GitHub Pages deployment files (`index.html`, `style.css`, `script.js`)  
+- `Scripts/` — Automation helpers for updating data or deploying changes  
+- `Evidence/` — Screenshots and logs proving deployment and usability  
+- `Docs/` — This guide, civic report, and deployment notes  
+
+---
+
+## 🚀 Setup Steps
+
+{
+  "address": "123 Oak Street",
+  "participating": true,
+  "treat_type": "candy",
+  "notes": "Decorated yard"
+}
+
+
