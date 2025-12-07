@@ -26,21 +26,6 @@ Demo: https://<your-username>.github.io/halloween-map/
 
 ---
 
-## 🏗 Repository Structure
-
-```plaintext
-Halloween-Map/
-├── Docs/                  # Setup guides, deployment notes, civic engagement reports
-├── Configs/               # Map configuration files, JSON datasets
-├── Scripts/               # Automation scripts for data updates and deployment
-├── Evidence/              # Screenshots, logs, and proof of deployment
-├── Images/                # Icons, map markers, and UI assets
-├── Diagrams/              # Architecture diagrams, workflow charts
-├── Pages/                 # GitHub Pages deployment files
-└── README.md              # This file
-
----
-
 # 🎃 Halloween Map — Setup Guide
 
 This guide explains how to set up, configure, and deploy the Halloween Map project. Designed for civic engagement and recruiter-facing usability, this map allows families to opt into Halloween participation and view neighborhood activity in real time.
@@ -64,9 +49,18 @@ This guide explains how to set up, configure, and deploy the Halloween Map proje
 - `Evidence/` — Screenshots and logs proving deployment and usability  
 - `Docs/` — This guide, civic report, and deployment notes  
 
----
+## 🏗 Repository Structure
 
-## 🚀 Setup Steps
+```plaintext
+Halloween-Map/
+├── Docs/                  # Setup guides, deployment notes, civic engagement reports
+├── Configs/               # Map configuration files, JSON datasets
+├── Scripts/               # Automation scripts for data updates and deployment
+├── Evidence/              # Screenshots, logs, and proof of deployment
+├── Images/                # Icons, map markers, and UI assets
+├── Diagrams/              # Architecture diagrams, workflow charts
+├── Pages/                 # GitHub Pages deployment files
+└── README.md              # This file
 
 {
   "address": "123 Oak Street",
